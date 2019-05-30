@@ -1,0 +1,6 @@
+db/
+node_modules/
+custom/
+package-lock.json
+.git/
+.DS_Store
