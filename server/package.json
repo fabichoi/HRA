@@ -1,12 +1,10 @@
 {
-  "name": "hss_server",
+  "name": "hra-server",
   "version": "1.0.0",
-  "description": "HSS SERVER",
+  "description": "HRA SERVER",
   "main": "index.js",
   "scripts": {
-    "start": "node src",
-    "start:dev": "nodemon --watch src src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "fabichoi",
@@ -14,6 +12,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.11.0",

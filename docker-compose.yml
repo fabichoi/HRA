@@ -1,0 +1,21 @@
+version: '3'
+services:
+  proxy:
+    image: nginx:latest
+    container_name: proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+    restart: "unless-stopped"
+
+  express:
+    build:
+      context: ./server
+    container_name: express
+    expose:
+      - "3000"
+    volumes:
+      - ./server/:/server/
+      - /server/node_modules
+    restart: "unless-stopped"

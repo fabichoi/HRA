@@ -4,9 +4,9 @@ var app = express();
 
 app.use(cors());
 
-var server = app.listen(3333, function() {
+var server = app.listen(3000, '0.0.0.0', () => {
     console.log("Hanja server has started on port 3333");
 });
 
-var router = require('./router/main')(app);
+//var router = require('./router/main')(app);
 
