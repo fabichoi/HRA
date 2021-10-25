@@ -1,11 +1,23 @@
-var express = require('express');
-var cors = require('cors');
-var app = express();
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+
+const app = express();
+
+const {PORT, MONGO_URI} = process.env;
 
 app.use(cors());
+app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
-var server = app.listen(3000, '0.0.0.0', () => {
-    console.log("Hanja server has started on port 3333");
+mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => console.log('Successfully connected to mongodb'))
+    .catch(e => console.error(e));
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`HRA server has started on port ${PORT}`);
 });
 
 //var router = require('./router/main')(app);

@@ -1,10 +1,9 @@
-const sqlite3 = require('sqlite3').verbose();
-const crypto = require('crypto');
-const info = require('../custom/info.js');
+const sqlite3 = require('mongoose');
 const url = './db/gksans.db';
 
 module.exports = function(app)
 {
+    /*
     app.get('/get', function(req, res) {
         let db = new sqlite3.Database(url, (err) => {if(err) {return console.error(err.message);}});        
         let sql = 'SELECT * FROM hanja where 1=1' 
@@ -18,7 +17,7 @@ module.exports = function(app)
         if(req.query.limit) sql += " limit " + req.query.limit;
 
         db.all(sql, [], function(err, rows) {
-            if(err) {return console.error(err.message)};
+            if(err) {return console.error(err.message)}
             let data = [];
             rows.forEach( (row) => {
                 if(row) {                    
@@ -33,7 +32,8 @@ module.exports = function(app)
         });
         
         db.close();        
-    }); 
+    });
+
 
     app.get('/set', function(req, res) {
         let db = new sqlite3.Database(url, (err) => {if(err) {return console.error(err.message);}});        
@@ -91,6 +91,6 @@ module.exports = function(app)
         res.send(JSON.stringify('done'));
         db.close();     
     });
-
+    */
 
 };
