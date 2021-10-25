@@ -12,13 +12,14 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
+mongoose.Promise = global.Promise;
+
 mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log('Successfully connected to mongodb'))
     .catch(e => console.error(e));
 
+app.use('/hanjas', require('./routes/hanjas'));
+
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`HRA server has started on port ${PORT}`);
 });
-
-//var router = require('./router/main')(app);
-
