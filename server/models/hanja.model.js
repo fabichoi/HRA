@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const hanjaSchema = new mongoose.Schema({
-    id: {type: Number, required: true, unique: true},
+    id: Number,
     level: Number,
     shape: String,
     mean: String,
@@ -18,15 +18,15 @@ hanjaSchema.statics.findAll = function () {
 };
 
 hanjaSchema.statics.findOneByHanjaId = function (hanjaId) {
-    return this.findOne({id: hanjaId});
+    return this.findOne({'id': hanjaId});
 };
 
 hanjaSchema.statics.updateByHanjaId = function (hanjaId, payload) {
     return this.findOneAndUpdate({hanjaId}, payload, {new: true});
-}
+};
 
 hanjaSchema.statics.deleteByHanjaId = function (hanjaId) {
     return this.remove({hanjaId});
-}
+};
 
-module.exports = mongoose.model('Hanja', hanjaSchema);
+module.exports = mongoose.model('hanjas', hanjaSchema);
