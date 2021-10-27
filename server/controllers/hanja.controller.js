@@ -1,13 +1,30 @@
-const hanja = require('../models/hanja.model');
+const db = require('../models');
+const Hanja = db.hanjas;
 
-// Create and Save a new Tutorial
 exports.create = (req, res) => {
+    const hanja = new Hanja({
+        level: req.body.level,
+        mean: req.body.mean,
+        shape: req.body.shape,
+        sound: req.body.sound
+    });
+
+    hanja
+        .save(hanja)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while creating the Hanja."
+            });
+        });
 
 };
 
-// Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
-    hanja.findAll()
+    Hanja.findAll()
         .then(data => {
             if (!data)
                 res.status(404).send({message: "Not found Hanjas"});
@@ -20,11 +37,10 @@ exports.findAll = (req, res) => {
         });
 };
 
-// Find a single Tutorial with an id
 exports.findOne = (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 
-    hanja.findOneByHanjaId(id)
+    Hanja.findOneByHanjaId(id)
         .then(data => {
             if (!data)
                 res.status(404).send({message: "Not found Hanja with id " + id});
@@ -37,22 +53,10 @@ exports.findOne = (req, res) => {
         });
 };
 
-// Update a Tutorial by the id in the request
 exports.update = (req, res) => {
 
 };
 
-// Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {
-
-};
-
-// Delete all Tutorials from the database.
-exports.deleteAll = (req, res) => {
-
-};
-
-// Find all published Tutorials
-exports.findAllPublished = (req, res) => {
 
 };

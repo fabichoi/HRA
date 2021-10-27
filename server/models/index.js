@@ -3,6 +3,6 @@ mongoose.Promise = global.Promise;
 
 const db = {};
 db.mongoose = mongoose;
-db.hanja = require("./hanja.model.js")(mongoose);
+db.hanjas = require("./hanja.model.js");
 
 module.exports = db;
