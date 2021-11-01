@@ -7,7 +7,7 @@ function hash(password) {
     return crypto.createHmac('sha512', process.env.SECRET_KEY).update(password).digest('hex');
 }
 
-const Account = new Schema({
+const AccountModel = new Schema({
     profile: {
         username: String     
     },
@@ -43,15 +43,15 @@ const Account = new Schema({
     }
 });
 
-Account.statics.findByUsername = function(username) {
+AccountModel.statics.findByUsername = function(username) {
     return this.findOne({'profile.username': username}).exec();
 }
 
-Account.statics.findByEmail = function(email) {
+AccountModel.statics.findByEmail = function(email) {
     return this.findOne({email}).exec();
 }
 
-Account.statics.findByEmailOrUsername = function({username, email}) {
+AccountModel.statics.findByEmailOrUsername = function({username, email}) {
     return this.findOne({
         $or: [
             { 'profile.username': username },
@@ -60,7 +60,7 @@ Account.statics.findByEmailOrUsername = function({username, email}) {
     }).exec();
 };
 
-Account.statics.localRegister = function({ username, email, password }) {
+AccountModel.statics.localRegister = function({ username, email, password }) {
     const account = new this({
         profile: {
             username
@@ -71,12 +71,12 @@ Account.statics.localRegister = function({ username, email, password }) {
     return account.save();
 };
 
-Account.methods.validatePassword = function(password) {
+AccountModel.methods.validatePassword = function(password) {
     const hashed = hash(password);
     return this.password === hashed;
 };
 
-Account.methods.generateToken = function() {
+AccountModel.methods.generateToken = function() {
     const payload = {
         _id: this.id,
         profile: this.profile
@@ -84,4 +84,4 @@ Account.methods.generateToken = function() {
     return generateToken(payload, 'account');
 }
 
-module.exports = mongoose.model('Account', Account);
+module.exports = mongoose.model('Account', AccountModel);

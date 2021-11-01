@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 const auth = new Router();
-const authCtrl = require('./auth.controller');
+const authCtrl = require('../controllers/auth.controller');
 
 auth.post('/register/local', authCtrl.localRegister);
 auth.post('/login/local', authCtrl.localLogin);

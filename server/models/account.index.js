@@ -6,8 +6,8 @@ var cors = require('cors');
 
 const app = new Koa();
 const router = new Router();
-const api = require('./api');
-const { jwtMiddleware } = require('./lib/token');
+const api = require('../routes');
+const { jwtMiddleware } = require('../lib/token');
 
 const corsOptions = {
     origin: '',
