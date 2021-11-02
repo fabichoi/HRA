@@ -1,21 +1,40 @@
 require('dotenv').config();
-const express = require('express');
+
+const Koa = require('koa');
+const Router = require('koa-router');
 const cors = require('cors');
+
+const app = new Koa();
+const router = new Router();
+const api = require('./routes');
+const {jwtMiddleware} = require('./lib/token');
+
 const {PORT, MONGO_URI} = process.env;
 
-const app = express();
+const corsOptions = {
+    origin: '',
+    credentials: true,
+}
 
-app.use(cors());
-app.use(express.static('public'));
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
+const mongoose = require('mongoose');
+const bodyParser = require('koa-bodyparser');
+mongoose.Promise = global.Promise;
 
-require('./routes/hanja.routes')(app);
+mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then((response) => {
+        console.log('Successfully connected to mongodb');
+    })
+    .catch(e => {
+        console.error(e);
+    });
 
-const db = require("./models");
-db.mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then(() => console.log('Successfully connected to mongodb'))
-    .catch(e => console.error(e));
+app.use(bodyParser());
+app.use(jwtMiddleware);
+//app.use(cors());
+
+router.use('/api', api.routes());
+
+app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`HRA server has started on port ${PORT}`);

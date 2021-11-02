@@ -1,16 +1,14 @@
-const db = require('../models');
-const Hanja = db.hanjas;
+const Joi = require('joi');
+const Hanja = require('../models/hanja.model');
 
-exports.findByLevel = (req, res) => {
-    const level = req.params.level;
+exports.findByLevel = async (ctx) => {
+    const level = ctx.params.level;
 
-    Hanja.findByLevel(level).then(data => {
-        if (!data) {
-            res.status(404).send({message: "Not found Hanja in this level"});
-        } else {
-            res.send(data);
-        }
-    }).catch(err => {
-        res.status(500).send({message: "Error retrieving Hanja in this level"});
-    });
+    try {
+        hanjas = await Hanja.findByLevel(level);
+    } catch (e) {
+        ctx.throw(500, e);
+    }
+
+    ctx.body = hanjas;
 };
