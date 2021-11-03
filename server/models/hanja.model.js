@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const hanjaSchema = new mongoose.Schema({
+const hanjaSchema = new Schema({
     level: Number, shape: String, mean: String, sound: String
 }, {
     versionKey: false
 });
 
 hanjaSchema.statics.findByLevel = function (level) {
-    return this.find({level: parseInt(level)});
+    return this.find({'level': level}).exec();
 };
 
 module.exports = mongoose.model("hanja", hanjaSchema);

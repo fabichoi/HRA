@@ -1,9 +1,8 @@
-module.exports = app => {
-    const hanja = require("../controllers/hanja.controller");
-    const router = require("express").Router();
+const Router = require('koa-router');
+const hanja = new Router();
+const hanjaCtrl = require('../controllers/hanja.controller');
 
-    // 급수별 한자 출력
-    router.get("/:level", hanja.findByLevel);
+// 급수별 한자 출력
+hanja.get("/:level", hanjaCtrl.findByLevel);
 
-    app.use('/api/v1/hanja', router);
-};
+module.exports = hanja;
