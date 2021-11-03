@@ -1,0 +1,10 @@
+.main {
+  display: table;  
+  width: 100%;
+  text-align: center;
+}
+
+.left, .right {  
+  display: table-cell;
+  width: 30%;  
+}

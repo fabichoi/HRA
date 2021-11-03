@@ -1,0 +1,19 @@
+body {
+    margin: 0 auto;
+    padding: 0;        
+    width: 450px;        
+    font-family: sans-serif;
+    background: #f9f9f9;
+}
+
+@media (min-width: 769px) {
+    body {
+        margin: 0 auto;
+        padding: 0;        
+        width: 650px;        
+        font-family: sans-serif;
+        background: #f9f9f9;
+    }
+}
+
+  

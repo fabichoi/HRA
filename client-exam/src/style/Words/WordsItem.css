@@ -1,0 +1,15 @@
+.desc {
+  padding: 1rem;   
+  margin: auto;
+  text-align: center;
+  vertical-align: center;    
+}
+
+.desc label {  
+  font-family: "궁서";
+  font-size: 3rem;
+  font-weight: bold;
+  outline: none;
+  border: none;  
+}
+

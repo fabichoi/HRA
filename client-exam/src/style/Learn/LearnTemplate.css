@@ -1,0 +1,29 @@
+.learn-template {
+  background: white;
+  width: 90%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin: 0 auto; 
+  margin-top: 1rem;
+}
+
+.learn-template .title {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  background: lightcoral;
+  color: white;
+}
+
+.learn-template .select-wrapper {
+  padding: 0.5rem;
+  border-bottom: 1px solid lightcoral;
+}
+
+.learn-template .form-wrapper {
+  padding: 0.5rem;
+  border-bottom: 1px solid lightcoral;
+}
+
+.learn-template .learn-wrapper {
+  min-height: 5rem;
+}
