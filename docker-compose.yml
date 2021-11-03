@@ -19,3 +19,14 @@ services:
       - ./server/:/server/
       - /server/node_modules
     restart: "unless-stopped"
+
+  react:
+    build:
+      context: ./client
+    container_name: react
+    expose:
+      - "3333"
+    volumes:
+      - ./client/:/client/
+      - /client/node_modules
+    restart: "unless-stopped"
