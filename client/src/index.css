@@ -1,19 +1,11 @@
 body {
-    margin: 0 auto;
-    padding: 0;        
-    width: 450px;        
+    margin: 0;
+    padding: 0;
     font-family: sans-serif;
-    background: #f9f9f9;
+    box-sizing: border-box;
+    background: #f1f1f5;
 }
 
-@media (min-width: 769px) {
-    body {
-        margin: 0 auto;
-        padding: 0;        
-        width: 650px;        
-        font-family: sans-serif;
-        background: #f9f9f9;
-    }
+*, *:before, *:after {
+    box-sizing: inherit;
 }
-
-  
