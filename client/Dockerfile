@@ -1,7 +1,7 @@
 FROM node:12
 
 WORKDIR /
-COPY ../client .
+COPY . .
 
 RUN npm install
 RUN npm install -g nodemon
