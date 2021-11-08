@@ -6,5 +6,6 @@ yarn.lock
 .DS_Store
 .env
 .*
+build/
 
 !.gitignore

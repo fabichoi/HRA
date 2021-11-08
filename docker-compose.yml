@@ -1,45 +1,38 @@
 version: '3'
 services:
-#  proxy:
-#    image: nginx:latest
-#    container_name: proxy
-#    ports:
-#      - "80:80"
-#    volumes:
-#      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
-#    restart: "unless-stopped"
+  proxy:
+    image: nginx:latest
+    container_name: proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+      - ./client/build:/usr/share/nginx/html
+    restart: "unless-stopped"
 
   express:
     build:
       context: ./server
     container_name: express
-#    expose:
-#      - "3000"
+    expose:
+      - "3000"
     # expose와 ports의 차이는 무엇인가?
-    ports:
-      - "3000:3000"
     volumes:
-      - ./server/:/server/
-      - /server/node_modules
-    restart: "unless-stopped"
+      - ./server/:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true
 
   mongodb:
     image: mongo:latest
-    container_name: "mongodb"
-    restart: always
+    container_name: mongodb
     volumes:
-      - ./db:/db
+      - mongodb_volume:/data/db
     ports:
       - "27017:27017"
 
-
-#  react:
-#    build:
-#      context: ./client
-#    container_name: react
-#    expose:
-#      - "3333"
-#    volumes:
-#      - ./client/:/client/
-#      - /client/node_modules
-#    restart: "unless-stopped"
+volumes:
+  mongodb_volume:
