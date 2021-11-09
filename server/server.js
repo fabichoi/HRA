@@ -9,7 +9,9 @@ const router = new Router();
 const api = require('./routes');
 const {jwtMiddleware} = require('./lib/token');
 
-const {PORT, MONGO_URI} = process.env;
+const {PORT} = process.env;
+const {MONGO_URI} = process.env;
+//const {MONGO_URI} = process.env.MONGO_URI_LOCAL;
 
 const corsOptions = {
     origin: '',

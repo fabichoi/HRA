@@ -7,6 +7,7 @@ services:
       - "80:80"
     volumes:
       - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+      - ./client/build:/usr/share/nginx/html
     restart: "unless-stopped"
 
   express:
@@ -15,7 +16,23 @@ services:
     container_name: express
     expose:
       - "3000"
+    # expose와 ports의 차이는 무엇인가?
     volumes:
-      - ./server/:/server/
-      - /server/node_modules
-    restart: "unless-stopped"
+      - ./server/:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    volumes:
+      - mongodb_volume:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongodb_volume:

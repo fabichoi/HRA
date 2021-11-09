@@ -3,4 +3,14 @@
 ## Requirements
 * docker with docker-compose
 * Node.js
-* sqlite3
+* MongoDB
+
+## Installation Guide
+```
+docker-compose up -d --build
+```
+
+## URI
+```
+
+```
