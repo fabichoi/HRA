@@ -12,3 +12,15 @@ exports.findByLevel = async (ctx) => {
 
     ctx.body = hanjas;
 };
+
+exports.findByMs = async (ctx) => {
+    const ms = ctx.query;
+
+    try {
+        hanjas = await Hanja.findByMs(ms);
+    } catch (e) {
+        ctx.throw(500, e);
+    }
+
+    ctx.body = hanjas;
+};

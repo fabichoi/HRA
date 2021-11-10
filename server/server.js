@@ -11,7 +11,6 @@ const {jwtMiddleware} = require('./lib/token');
 
 const {PORT} = process.env;
 const {MONGO_URI} = process.env;
-//const {MONGO_URI} = process.env.MONGO_URI_LOCAL;
 
 const corsOptions = {
     origin: '',

@@ -11,4 +11,8 @@ hanjaSchema.statics.findByLevel = function (level) {
     return this.find({'level': level}).exec();
 };
 
+hanjaSchema.statics.findByMs = function (ms) {
+    return this.find({'mean': ms.mean, 'sound': ms.sound}).exec();
+};
+
 module.exports = mongoose.model("hanja", hanjaSchema);
