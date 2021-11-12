@@ -3,9 +3,10 @@ const Hanja = require('../models/hanja.model');
 
 exports.findByLevel = async (ctx) => {
     const level = ctx.params.level;
+    const params = ctx.query;
 
     try {
-        hanjas = await Hanja.findByLevel(level);
+        hanjas = await Hanja.findByLevel(level, params);
     } catch (e) {
         ctx.throw(500, e);
     }

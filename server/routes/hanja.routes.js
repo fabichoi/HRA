@@ -6,5 +6,4 @@ const hanjaCtrl = require('../controllers/hanja.controller');
 hanja.get("/level/:level", hanjaCtrl.findByLevel);
 // 한자 조회
 hanja.get("/search", hanjaCtrl.findByMs);
-
 module.exports = hanja;
