@@ -8,7 +8,7 @@ services:
     volumes:
       - ./proxy/nginx.conf:/etc/nginx/nginx.conf
       - ./client/build:/usr/share/nginx/html
-    restart: "unless-stopped"
+    restart: "always"
 
   express:
     build:
@@ -25,6 +25,7 @@ services:
       - CHOKIDAR_USEPOLLING=true
     stdin_open: true
     tty: true
+    restart: "always"
 
   mongodb:
     image: mongo:latest
@@ -33,6 +34,7 @@ services:
       - mongodb_volume:/data/db
     ports:
       - "27017:27017"
+    restart: "always"
 
 volumes:
   mongodb_volume:

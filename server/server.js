@@ -1,3 +1,6 @@
+require("dotenv").config({
+    path: process.env.NODE_ENV == "production" ? ".env" : ".env.dev"
+});
 const dotenv = require('dotenv');
 const Koa = require('koa');
 const Router = require('koa-router');
@@ -7,10 +10,6 @@ const app = new Koa();
 const router = new Router();
 const api = require('./routes');
 const {jwtMiddleware} = require('./lib/token');
-
-dotenv.config({
-    path: process.env.NODE_ENV == "production" ? ".env" : ".env.dev"
-});
 
 const corsOptions = {
     origin: '',
