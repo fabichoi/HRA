@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 import SearchTemplate from '../components/Search/SearchTemplate';
 import SearchItemList from '../components/Search/SearchItemList';
 import SearchForm from '../components/Search/SearchForm';
 import info from '../info';
 
-class Search extends React.Component {
+class Search extends Component {
     state = {
         hanjas: []
     }
