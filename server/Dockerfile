@@ -2,11 +2,6 @@ FROM node:12
 
 RUN mkdir /app
 WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
-COPY package.json /app/package.json
+COPY build/server.js .
 
-RUN npm install --no-cache
-
-COPY . /app
-
-CMD [ "npm", "start"]
+CMD [ "node", "server.js"]

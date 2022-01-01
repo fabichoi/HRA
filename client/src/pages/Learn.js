@@ -36,7 +36,7 @@ class Learn extends React.Component {
       default:
         break;
     }
-    const get = await axios.get(`http://${info.ip()}:${info.port()}/get?level=${data.level}&order=${order}&limit=${this.state.limit}`);
+    const get = await axios.get(`http://${info.ip()}/api/v1/hanja/level/${data.level}/?order=${order}&limit=${this.state.limit}`);
     this.setState({
       index: 0,
       level: data.level,
