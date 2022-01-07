@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const evalSchema = new Schema({
-    hanja_id: Number, right_cnt: Number, wrong_cnt: Number
+    user_id: Number, hanja_id: Number, right_cnt: Number, wrong_cnt: Number
 }, {
     versionKey: false
 });
