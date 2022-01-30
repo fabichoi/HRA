@@ -19,8 +19,6 @@ class LearnSelect extends React.Component {
       ],
       types: [
         {type: 1, typeLabel: "가나다 순으로"},
-        {type: 2, typeLabel: "낮은 정답률순"},
-        {type: 3, typeLabel: "낮은 시도율순"},
         {type: 4, typeLabel: "무작위 순으로"},       
       ]
     };
